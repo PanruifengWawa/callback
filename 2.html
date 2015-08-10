@@ -1,0 +1,46 @@
+<html>
+<head>
+	<script src = "jquery-1.7.2.min.js"></script>
+	<script src = "angular.min.js"></script>
+	
+</head>
+<body>
+	
+</body>
+</html>
+<script language="javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script language="javascript">
+ $.ajax({   
+            async:false,   
+            url: 'http://api.k780.com:88/',  // 跨域URL  
+            type: 'get',   
+            dataType: 'jsonp',   
+            jsonp: 'jsoncallback', //默认callback  
+            data: {
+			  "app":"idcard.get",
+			  "idcard":"xxxx",
+			  "appkey":"14934",
+			  "sign":"f3f71a40433565aa60df986e5ab3b366",
+			  "format":"json"
+			  
+			},   
+            timeout: 5000,   
+            beforeSend: function(){  //jsonp 方式此方法不被触发。原因可能是dataType如果指定为jsonp的话，就已经不是ajax事件了  
+            },  
+            success: function (json) { //客户端jquery预先定义好的callback函数，成功获取跨域服务器上的json数据后，会动态执行这个callback函数   
+            /*    if(json.actionErrors.length!=0){   
+                    alert(json.actionErrors);   
+                    }   
+                genDynamicContent(qsData,type,json); */  
+                  
+                console.log(json);  
+                  
+            },   
+            complete: function(XMLHttpRequest, textStatus){   
+               // $.unblockUI({ fadeOut: 10 });   
+            },   
+            error: function(xhr){   
+                console.log(xhr);
+            }   
+        });  
+</script>
