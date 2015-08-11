@@ -5,11 +5,14 @@
 	
 </head>
 <body>
-	
+    <input type="number" id="idcard"/>
+	<button onclick="get()">get</button>
+	<div id="query"><div>
 </body>
 </html>
-<script language="javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
 <script language="javascript">
+function get(){
  $.ajax({   
             async:false,   
             url: 'http://api.k780.com:88/',  // 跨域URL  
@@ -18,7 +21,7 @@
             jsonp: 'jsoncallback', //默认callback  
             data: {
 			  "app":"idcard.get",
-			  "idcard":"xxxx",
+			  "idcard":document.getElementById("idcard").value,
 			  "appkey":"14934",
 			  "sign":"f3f71a40433565aa60df986e5ab3b366",
 			  "format":"json"
@@ -33,7 +36,7 @@
                     }   
                 genDynamicContent(qsData,type,json); */  
                   
-                console.log(json);  
+                document.getElementById("query").innerHTML=JSON.stringify(json);  
                   
             },   
             complete: function(XMLHttpRequest, textStatus){   
@@ -43,4 +46,5 @@
                 console.log(xhr);
             }   
         });  
+	}
 </script>
